@@ -361,7 +361,7 @@ button{font-family:inherit;cursor:pointer;border:none;color:inherit;background:n
       <button class="bp" id="btnBuy" style="flex:1;background:#555;box-shadow:0 4px 0 #333;cursor:not-allowed" disabled>🛒 Nhập hàng</button>
       <button class="bp" id="btnServeDay" style="flex:1.2">🚪 Mở cửa ngày 1</button>
     </div>
-    <div style="text-align:center;font-size:10px;color:var(--dim);margin-top:5px">Mặt bằng 40k, điện nước 15k/ngày</div>
+    <div style="text-align:center;font-size:10px;color:var(--dim);margin-top:5px">Mặt bằng 300k, điện nước 100k/ngày</div>
   </div>
 </div>
 
@@ -396,7 +396,7 @@ const DP={base:35000,bomy:15000,xucxich:8000,raucai:5000};
 const SHIP=15000;
 const ET={kimchiT:{nm:'Kim chi',ic:'🌶️',price:5000,exp:5,lvl:2,cost:80000,sell:5000,grp:'topping'},dauhu:{nm:'Đậu hũ',ic:'🧈',price:6000,exp:2,lvl:2,cost:90000,sell:6000,grp:'topping'},trungT:{nm:'Trứng lòng đào',ic:'🥚',price:6000,exp:2,lvl:2,cost:100000,sell:6000,grp:'topping'},nam:{nm:'Nấm kim châm',ic:'🍄',price:6000,exp:2,lvl:3,cost:100000,sell:6000,grp:'topping'},bap:{nm:'Bắp ngọt',ic:'🌽',price:5000,exp:3,lvl:3,cost:110000,sell:5000,grp:'topping'},thanhcua:{nm:'Thanh cua',ic:'🦀',price:7000,exp:3,lvl:3,cost:130000,sell:7000,grp:'topping'},cavien:{nm:'Cá viên',ic:'🍢',price:7000,exp:3,lvl:4,cost:120000,sell:7000,grp:'topping'},rongbien:{nm:'Rong biển',ic:'🌿',price:5000,exp:5,lvl:4,cost:120000,sell:5000,grp:'topping'},bovien:{nm:'Bò viên',ic:'🍡',price:8000,exp:3,lvl:4,cost:140000,sell:8000,grp:'topping'},phomai:{nm:'Phô mai lát',ic:'🧀',price:8000,exp:5,lvl:5,cost:150000,sell:8000,grp:'topping'},chacaha:{nm:'Chả cá Hàn',ic:'🐟',price:7000,exp:3,lvl:5,cost:150000,sell:7000,grp:'topping'},trungcut:{nm:'Trứng cút',ic:'🥚',price:7000,exp:3,lvl:5,cost:160000,sell:7000,grp:'topping'},suicao:{nm:'Sủi cảo',ic:'🥟',price:9000,exp:3,lvl:5,cost:180000,sell:9000,grp:'topping'},banhgao:{nm:'Bánh gạo',ic:'🍙',price:7000,exp:3,lvl:6,cost:200000,sell:7000,grp:'topping'},bachi:{nm:'Ba chỉ heo',ic:'🥓',price:13000,exp:1,lvl:6,cost:220000,sell:13000,grp:'topping'},gagion:{nm:'Gà giòn',ic:'🍗',price:11000,exp:2,lvl:7,cost:250000,sell:11000,grp:'topping'},haisan:{nm:'Hải sản',ic:'🦐',price:18000,exp:1,lvl:8,cost:300000,sell:18000,grp:'topping'},bachtuoc:{nm:'Bạch tuộc',ic:'🐙',price:16000,exp:1,lvl:9,cost:320000,sell:16000,grp:'topping'}};
 const EB={tomyum:{nm:'Tomyum',ic:'🍲',lvl:3,cost:250000,sell:39000},launam:{nm:'Lẩu nấm',ic:'🍲',lvl:4,cost:280000,sell:38000},tuongden:{nm:'Tương đen',ic:'🍲',lvl:5,cost:300000,sell:38000},mala:{nm:'Mala Tứ Xuyên',ic:'🍲',lvl:5,cost:350000,sell:44000},tieuxanh:{nm:'Bò tiêu xanh',ic:'🍲',lvl:6,cost:380000,sell:43000},suaphomai:{nm:'Sữa phô mai',ic:'🍲',lvl:7,cost:400000,sell:42000},galae:{nm:'Gà lá é',ic:'🍲',lvl:8,cost:420000,sell:45000},rieucua:{nm:'Riêu cua',ic:'🍲',lvl:9,cost:480000,sell:48000}};
-const EQ={wifi:{nm:'Wifi miễn phí',ic:'📶',cat:'tb',lvl:2,cost:250000,desc:'Khách chờ lâu hơn 12%'},bieden:{nm:'Biển đèn MÌ CAY',ic:'💡',cat:'tb',lvl:2,cost:300000,desc:'+20% khách'},quat:{nm:'Quạt hơi nước',ic:'🌬️',cat:'tb',lvl:3,cost:350000,desc:'Khách chờ lâu hơn 25%'},ghe:{nm:'Ghế đệm êm',ic:'💺',cat:'tb',lvl:4,cost:350000,desc:'Khách chờ lâu hơn 12%'},bep:{nm:'Bếp lửa lớn',ic:'🔥',cat:'tb',lvl:5,cost:400000,desc:'Vùng xanh rộng hơn'},app:{nm:'App giao hàng',ic:'📱',cat:'tb',lvl:5,cost:500000,desc:'Nhận đơn giao xa'},tivi:{nm:'Tivi ca nhạc',ic:'📺',cat:'tb',lvl:6,cost:450000,desc:'Khách chờ lâu hơn 10%'},tiktok:{nm:'Quay TikTok',ic:'🎬',cat:'tb',lvl:6,cost:500000,desc:'+25% khách'},keban:{nm:'Kê thêm bàn',ic:'🪑',cat:'tb',lvl:7,cost:600000,desc:'+1 chỗ ngồi'},hutip:{nm:'Hũ tip heo đất',ic:'🐷',cat:'pk',lvl:2,cost:120000,desc:'Tip nhiều hơn 50%'},toroi:{nm:'Tờ rơi',ic:'📄',cat:'pk',lvl:2,cost:150000,desc:'+10% khách'},loakeokeo:{nm:'Loa kẹo kéo',ic:'📢',cat:'pk',lvl:3,cost:250000,desc:'+12% khách'},menuin:{nm:'Menu in màu',ic:'📋',cat:'pk',lvl:4,cost:400000,desc:'Khách chấp nhận giá cao'},meothantai:{nm:'Mèo thần tài',ic:'🐱',cat:'pk',lvl:4,cost:450000,desc:'+5k tip mỗi tô'},ghimmap:{nm:'Ghim Google Maps',ic:'📍',cat:'pk',lvl:5,cost:350000,desc:'+15% khách'},bangled:{nm:'Bảng LED',ic:'🪧',cat:'pk',lvl:5,cost:400000,desc:'Tối +25% khách'},tosu:{nm:'Tô sứ vẽ tay',ic:'🥣',cat:'pk',lvl:6,cost:600000,desc:'Tip +3k mỗi tô'},kol:{nm:'KOL review',ic:'⭐',cat:'pk',lvl:8,cost:1200000,desc:'+30% khách'},chiMan:{nm:'Chị Mận · Thu ngân',ic:'👩',cat:'nv',lvl:3,wage:50000,desc:'Khách không ăn quỵt'},beNa:{nm:'Bé Na · Phụ bếp',ic:'👧',cat:'nv',lvl:4,wage:60000,desc:'Tự vớt mì đúng lúc'},beMit:{nm:'Bé Mít · Chạy bàn',ic:'👦',cat:'nv',lvl:5,wage:60000,desc:'Khách kiên nhẫn hơn 15%'}};
+const EQ={wifi:{nm:'Wifi miễn phí',ic:'📶',cat:'tb',lvl:2,cost:250000,desc:'Khách chờ lâu hơn 12%'},bieden:{nm:'Biển đèn MÌ CAY',ic:'💡',cat:'tb',lvl:2,cost:300000,desc:'+20% khách'},quat:{nm:'Quạt hơi nước',ic:'🌬️',cat:'tb',lvl:3,cost:350000,desc:'Khách chờ lâu hơn 25%'},ghe:{nm:'Ghế đệm êm',ic:'💺',cat:'tb',lvl:4,cost:350000,desc:'Khách chờ lâu hơn 12%'},bep:{nm:'Bếp lửa lớn',ic:'🔥',cat:'tb',lvl:5,cost:400000,desc:'Vùng xanh rộng hơn'},app:{nm:'App giao hàng',ic:'📱',cat:'tb',lvl:5,cost:500000,desc:'Nhận đơn giao xa'},tivi:{nm:'Tivi ca nhạc',ic:'📺',cat:'tb',lvl:6,cost:450000,desc:'Khách chờ lâu hơn 10%'},tiktok:{nm:'Quay TikTok',ic:'🎬',cat:'tb',lvl:6,cost:500000,desc:'+25% khách'},keban:{nm:'Kê thêm bàn',ic:'🪑',cat:'tb',lvl:7,cost:600000,desc:'+1 chỗ ngồi'},hutip:{nm:'Hũ tip heo đất',ic:'🐷',cat:'pk',lvl:2,cost:120000,desc:'Tip nhiều hơn 50%'},toroi:{nm:'Tờ rơi',ic:'📄',cat:'pk',lvl:2,cost:150000,desc:'+10% khách'},loakeokeo:{nm:'Loa kẹo kéo',ic:'📢',cat:'pk',lvl:3,cost:250000,desc:'+12% khách'},menuin:{nm:'Menu in màu',ic:'📋',cat:'pk',lvl:4,cost:400000,desc:'Khách chấp nhận giá cao'},meothantai:{nm:'Mèo thần tài',ic:'🐱',cat:'pk',lvl:4,cost:450000,desc:'+5k tip mỗi tô'},ghimmap:{nm:'Ghim Google Maps',ic:'📍',cat:'pk',lvl:5,cost:350000,desc:'+15% khách'},bangled:{nm:'Bảng LED',ic:'🪧',cat:'pk',lvl:5,cost:400000,desc:'Tối +25% khách'},tosu:{nm:'Tô sứ vẽ tay',ic:'🥣',cat:'pk',lvl:6,cost:600000,desc:'Tip +3k mỗi tô'},kol:{nm:'KOL review',ic:'⭐',cat:'pk',lvl:8,cost:1200000,desc:'+30% khách'},chiMan:{nm:'Chị Mận · Thu ngân',ic:'👩',cat:'nv',lvl:3,wage:250000,desc:'Khách không ăn quỵt'},beNa:{nm:'Bé Na · Phụ bếp',ic:'👧',cat:'nv',lvl:4,wage:280000,desc:'Tự vớt mì đúng lúc'},beMit:{nm:'Bé Mít · Chạy bàn',ic:'👦',cat:'nv',lvl:5,wage:280000,desc:'Khách kiên nhẫn hơn 15%'}};
 const EC={nv:'Nhân viên',tb:'Trang bị',pk:'Phụ kiện'};
 const DC={awning:[{id:'do',nm:'Đỏ ớt',c1:'#d94a3d',c2:'#fff',lvl:1},{id:'hong',nm:'Hồng đậu',c1:'#c48a9c',c2:'#e8d4d0',lvl:2},{id:'xanh',nm:'Xanh bạc hà',c1:'#7dab9a',c2:'#e8e0d0',lvl:3},{id:'vang',nm:'Vàng trứng',c1:'#c9a23d',c2:'#f0e0c0',lvl:4},{id:'tim',nm:'Tím khoai môn',c1:'#8a7db8',c2:'#d8d0e8',lvl:6}],pet:[{id:'hamster',nm:'Hamster Đậu',ic:'🐹',lvl:4,desc:'Ôm hạt hướng dương'},{id:'meo',nm:'Mèo mướp Mochi',ic:'🐱',lvl:6,desc:'Ngủ trước cửa'},{id:'cho',nm:'Cún shiba Bơ',ic:'🐶',lvl:8,desc:'Vẫy đuôi'}],plant:[{id:'xuong',nm:'Chậu xương rồng',ic:'🌵',lvl:2,desc:'Nhỏ xinh'},{id:'cuc',nm:'Chậu hoa cúc',ic:'🌼',lvl:3,desc:'Ai cũng nhìn'},{id:'trau',nm:'Cây trầu bà',ic:'🌿',lvl:4,desc:'Lá xanh mát'}],light:[{id:'den',nm:'Đèn lồng đỏ',ic:'🏮',lvl:3,desc:'Treo hai bên'},{id:'chuong',nm:'Chuông gió',ic:'🎐',lvl:5,desc:'Leng keng'}]};
 const FA=['👩','👨','🧓','👵','👴','🧒','👦','👧','🧔','👩‍🦰','👨‍🦱','🧑'];
@@ -407,7 +407,7 @@ const LN=['Xe đẩy vỉa hè','Quán cóc','Tiệm nhỏ','Tiệm nổi tiến
 const LB=[{name:'Bộ cánh cam',lvl:10,day:241,money:900171900},{name:'Tiệm ăn bug',lvl:10,day:179,money:891189100},{name:'Trôn có lài',lvl:10,day:167,money:656846700},{name:'Tiệm Mỳ Của Bé Tín',lvl:10,day:135,money:503052200},{name:'Ngăn Bọt Tơ',lvl:10,day:121,money:467569800},{name:'Bá Khí Trường O',lvl:10,day:133,money:411978600}];
 const NB=[{name:'Chauxhamster 🐙',lvl:10,rank:25174},{name:'Susu ơte',lvl:10,rank:25175},{name:'cay xốn lè',lvl:10,rank:25176},{name:'Mì Cay Tê Tái',lvl:10,rank:25177},{name:'tiệm mì c',lvl:10,rank:25178},{name:'Mì Cay Nhà Dulcie',lvl:10,rank:25179}];
 const TB=[{name:'Mì cay xé lớn',score:3371},{name:'Mì Cay Nhà Sam',score:3354},{name:'Tìm mì Jseoul',score:3353}];
-const RENT=40000,UTIL=15000;
+const RENT=300000,UTIL=100000;
 const LV=[0,150,400,800,1400,2200,3300,4800,6800,9500,13000];
 const fm=n=>Math.round(n).toLocaleString('vi-VN')+'đ';
 const fk=n=>n>=1e6?(n/1e6).toFixed(1).replace('.',',')+'M':n>=1e3?Math.round(n/1e3)+'k':Math.round(n)+'đ';
@@ -718,9 +718,10 @@ function openDay(){
   servedToday=0;angryToday=0;revToday=0;fiveStarsToday=0;bowlsReturnedToday=0;
   S.missionBowl=0;S.missionAngry=0;S.missionFive=0;
   nextCustId=1;spawnTimer=0.4;
-  dayTotal=Math.round((3+Math.floor(Math.random()*13))*cm2());
-  if(dayTotal<=5)tst('Hôm nay vắng khách...','b');
-  else if(dayTotal>=14)tst('Hôm nay đông khách!','g');
+   dayTotal=Math.max(1,Math.round((1+Math.floor(Math.random()*100))*cm2()));
+  if(dayTotal<=20)tst(`Hôm nay vắng khách (${dayTotal} người)...`,'b');
+  else if(dayTotal>=60)tst(`Hôm nay ĐÔNG KINH KHỦNG (${dayTotal} người)!`,'g');
+  else if(dayTotal>=30)tst(`Hôm nay đông khách (${dayTotal} người)`,'g');
   for(const id in S.hired){if(S.hired[id]==='saved')S.hired[id]=true;}
   S.time=9*60;S.haggledToday=false;S.pranksToday=0;tournamentMode=false;orderStripLastId=undefined;
   qlTimer=0;
@@ -1163,7 +1164,7 @@ function startBoxingGame(callback){
   };
   const tickAtk=()=>{
     if(!running)return;
-    const dmg=6+Math.floor(Math.random()*14);
+    const dmg=6+Math.floor(Math.random()*16);
     pHP-=dmg;
     msg.textContent=`Bị đánh ${dmg}!`;
     msg.className='box-msg ouch';
@@ -1292,7 +1293,7 @@ function loop(now){
       if(h)h.textContent=`⏱ ${Math.ceil(tournamentTimer)}s · Điểm ${tournamentScore}`;
       if(tournamentTimer<=0)enTN();
     }else{
-      S.time+=dt*40;
+      S.time+=dt*36;
       if(S.time>=21*60){
         S.time=21*60;
         if(!tournamentMode&&running){tst('21h rồi, đóng cửa nghỉ!','b');closeShopAuto();}
@@ -1307,9 +1308,17 @@ function loop(now){
     }
     spawnTimer-=dt;
     const sl=tournamentMode?20:dayTotal;
-    if(spawnTimer<=0&&!boxingActive&&servedToday+angryToday+customers.length<sl){
-      if(spCust()){spawnTimer=tournamentMode?1.5+Math.random()*1.5:2.5+Math.random()*2.5;rSlot();rOS();}
-      else{spawnTimer=0.5;}
+        if(spawnTimer<=0&&!boxingActive&&servedToday+angryToday+customers.length<sl){
+      if(spCust()){
+        if(tournamentMode){
+          spawnTimer=1.5+Math.random()*1.5;
+        }else{
+          const remainTime=(21*60-S.time)/36;
+          const remainCust=sl-(servedToday+angryToday+customers.length);
+          spawnTimer=Math.max(0.6, Math.min(5, remainTime/Math.max(1,remainCust)*0.7));
+        }
+        rSlot();rOS();
+      }else{spawnTimer=0.5;}
     }
     rSH();
     document.querySelectorAll('.pr2').forEach(r=>{
