@@ -287,6 +287,20 @@ button{font-family:inherit;cursor:pointer;border:none;color:inherit;background:n
 .box-btn{width:100%;padding:22px;border-radius:16px;background:var(--red);color:#fff;font-size:22px;font-weight:900;box-shadow:0 5px 0 var(--red-dk);margin-top:8px;letter-spacing:2px}
 .box-btn:active{transform:translateY(3px);box-shadow:0 2px 0 var(--red-dk);background:#b03a2e}
 .box-hint{font-size:11px;color:var(--dim);margin-top:10px;line-height:1.4}
+.ev-modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:270;padding:16px}
+.ev-modal.on{display:flex}
+.ev-card{background:#fffdf8;border-radius:20px;padding:22px;max-width:360px;width:100%;text-align:center;color:#3a2820;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.ev-avatar{width:90px;height:90px;margin:0 auto 12px;border-radius:50%;background:linear-gradient(135deg,#fce4d6,#f8d0c0);display:flex;align-items:center;justify-content:center;font-size:56px;border:3px solid #f0c0b0}
+.ev-tag{display:inline-block;background:#d94a3d;color:#fff;padding:5px 16px;border-radius:20px;font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:12px}
+.ev-title{font-size:22px;font-weight:900;color:#2a1815;margin-bottom:10px;line-height:1.2}
+.ev-desc{font-size:14px;color:#5a4030;line-height:1.5;margin-bottom:18px}
+.ev-desc b{color:#d94a3d;font-weight:800}
+.ev-opt{width:100%;padding:14px 18px;border-radius:14px;background:#d94a3d;color:#fff;font-size:15px;font-weight:800;margin-bottom:8px;cursor:pointer;text-align:center;border:none;font-family:inherit;transition:transform .1s;line-height:1.3}
+.ev-opt:active{transform:scale(.97)}
+.ev-opt .sub{display:block;font-size:11px;font-weight:600;opacity:.9;margin-top:3px}
+.ev-opt.alt{background:#f0ebe3;color:#3a2820}
+.ev-opt.alt .sub{color:#8a7060}
+.ev-opt.ghost{background:transparent;border:2px solid #e0d0c0}
 </style>
 </head>
 <body>
@@ -317,7 +331,7 @@ button{font-family:inherit;cursor:pointer;border:none;color:inherit;background:n
   <div class="ts"><div class="tv"><div style="font-size:50px">🛒</div></div><div class="tt"><h2>Sáng: nhập hàng</h2><p>Vào tab Kho, bấm + chọn món rồi bấm <b>🛒 Nhập hàng</b>. Sau đó mới bấm <b>🚪 Mở cửa</b>.</p></div></div>
   <div class="ts"><div class="tv"><div style="font-size:50px">💚</div></div><div class="tt"><h2>Viền vàng → viền xanh</h2><p>Khách gọi món nào → ô đó viền vàng. Bỏ đúng → viền xanh lá.</p></div></div>
   <div class="ts"><div class="tv" style="font-size:24px">🥣→🥘→🍜→🥩→🌶️→🍜</div><div class="tt"><h2>Nấu một tô</h2><p>Lấy tô → nước dùng → luộc mì → topping → sốt → giao.</p></div></div>
-  <div class="ts"><div class="tv"><div style="font-size:50px">⏰</div></div><div class="tt"><h2>9h-21h · 18 phút</h2><p>Một ngày 18 phút. 21h tự đóng cửa. Số khách random mỗi ngày.</p></div></div>
+   <div class="ts"><div class="tv"><div style="font-size:50px">⏰</div></div><div class="tt"><h2>9h-21h · 1 tiếng</h2><p>Một ngày 1 tiếng. 21h tự đóng cửa. Hết mì cũng tự đóng. Số khách random mỗi ngày.</p></div></div>
   <div class="ts"><div class="tv"><div style="font-size:50px">🧼</div></div><div class="tt"><h2>Rửa tô cuối ngày</h2><p>Khách ăn xong trả tô bẩn. Cuối ngày vào Rửa tô.</p></div></div>
   <div class="ts"><div class="tv"><div style="font-size:50px">🐭</div></div><div class="tt"><h2>Sự cố bất ngờ</h2><p>Đập chuột gián, khách đập chén, quản lý ghé tăng giá hoặc phạt NV. Xử lý khéo léo!</p></div></div>
   <div class="td" id="tutDots"></div>
@@ -361,7 +375,7 @@ button{font-family:inherit;cursor:pointer;border:none;color:inherit;background:n
       <button class="bp" id="btnBuy" style="flex:1;background:#555;box-shadow:0 4px 0 #333;cursor:not-allowed" disabled>🛒 Nhập hàng</button>
       <button class="bp" id="btnServeDay" style="flex:1.2">🚪 Mở cửa ngày 1</button>
     </div>
-    <div style="text-align:center;font-size:10px;color:var(--dim);margin-top:5px">Mặt bằng 300k, điện nước 100k/ngày</div>
+    <div style="text-align:center;font-size:10px;color:var(--dim);margin-top:5px">Mặt bằng 50k, điện nước 20k/ngày</div>
   </div>
 </div>
 
@@ -370,6 +384,7 @@ button{font-family:inherit;cursor:pointer;border:none;color:inherit;background:n
     <div><div class="sd">Ngày <span id="svDay">1</span></div><div class="st2" id="svTime">09:00 · đóng 21:00</div></div>
     <div class="sc"><div class="sl">KẾT</div><div class="sm" id="svMoney">400k</div></div>
     <div style="text-align:right"><div class="ps" id="svStars">★★★★☆</div><div style="font-size:10px;color:var(--dim)" id="svRate">4.0</div></div>
+    <button class="cb" id="btnBGM" style="background:#555;box-shadow:0 2px 0 #333">🔇 Nhạc</button>
     <button class="cb" id="btnCloseShop">🚪 Đóng cửa</button>
   </div>
   <div class="sb">
@@ -407,7 +422,7 @@ const LN=['Xe đẩy vỉa hè','Quán cóc','Tiệm nhỏ','Tiệm nổi tiến
 const LB=[{name:'Bộ cánh cam',lvl:10,day:241,money:900171900},{name:'Tiệm ăn bug',lvl:10,day:179,money:891189100},{name:'Trôn có lài',lvl:10,day:167,money:656846700},{name:'Tiệm Mỳ Của Bé Tín',lvl:10,day:135,money:503052200},{name:'Ngăn Bọt Tơ',lvl:10,day:121,money:467569800},{name:'Bá Khí Trường O',lvl:10,day:133,money:411978600}];
 const NB=[{name:'Chauxhamster 🐙',lvl:10,rank:25174},{name:'Susu ơte',lvl:10,rank:25175},{name:'cay xốn lè',lvl:10,rank:25176},{name:'Mì Cay Tê Tái',lvl:10,rank:25177},{name:'tiệm mì c',lvl:10,rank:25178},{name:'Mì Cay Nhà Dulcie',lvl:10,rank:25179}];
 const TB=[{name:'Mì cay xé lớn',score:3371},{name:'Mì Cay Nhà Sam',score:3354},{name:'Tìm mì Jseoul',score:3353}];
-const RENT=300000,UTIL=100000;
+const RENT=50000,UTIL=20000;
 const LV=[0,150,400,800,1400,2200,3300,4800,6800,9500,13000];
 const fm=n=>Math.round(n).toLocaleString('vi-VN')+'đ';
 const fk=n=>n>=1e6?(n/1e6).toFixed(1).replace('.',',')+'M':n>=1e3?Math.round(n/1e3)+'k':Math.round(n)+'đ';
@@ -458,7 +473,7 @@ function hdu(){return hu('app');}
 function rcm(){const z=$('cmZone');if(!z)return;const[g1,g2]=cgz();z.style.background=`linear-gradient(90deg,#5a2020 0%,#5a2020 ${g1*100}%,#4a9e4a ${g1*100}%,#4a9e4a ${g2*100}%,#5a2020 ${g2*100}%,#5a2020 100%)`;}
 // ============ INIT START ============
 function initStart(){
-  $('btnOpenShop').onclick=()=>{sw('s-prep');rPrep();};
+  $('btnOpenShop').onclick=()=>{sw('s-prep');rPrep();if(!bgmOn)startBGM();};
   $('btnHowto').onclick=()=>{sw('s-tut');shTut(0);};
   $('btnLeaderboard').onclick=sLB;
   $('btnRename').onclick=sRN;
@@ -949,8 +964,11 @@ function finSrv(c,pr,st,ep){
     else{const ts3=RT[st]||RT[3];tx=rd(ts3);}
     S.reviewList.push({face:c.face,name:c.name,stars:st,text:tx,day:S.day});
   }
-  tst(`+${fk(pr)} ${'★'.repeat(st)}`,st>=5?'g':'');
+    tst(`+${fk(pr)} ${'★'.repeat(st)}`,st>=5?'g':'');
   resetBW();rSrv();
+  if(!tournamentMode&&Math.random()<0.40){
+    setTimeout(()=>triggerRandomEvent(c),300);
+  }
 }
 function showCP(c,pr,st){
   const cd=document.createElement('div');cd.className='cd';
@@ -1020,7 +1038,19 @@ function tickPt(dt){
     tst('Khách bỏ về!','b');rSrv();
   });
 }
-function chkEnd(){if(tournamentMode)return;if(servedToday+angryToday>=dayTotal&&!customers.length)endDay();}
+function chkEnd(){
+  if(tournamentMode)return;
+  if(servedToday+angryToday>=dayTotal&&!customers.length){endDay();return;}
+  if(running && !boxingActive && S.stock.mi.qty<=0 && !bowl.cooking && !bowl.noodleState && (customers.length>0 || servedToday>0)){
+    const r=customers.length;
+    running=false;
+    customers=[];
+    angryToday+=r;S.missionAngry+=r;
+    if(r>0)tst(`Hết mì rồi! ${r} khách còn lại phải về.`,'b');
+    else tst('Hết mì rồi, đóng cửa nghỉ!','b');
+    endDay();
+  }
+}
 function closeShop(){
   if(!running)return;
   if(tournamentMode){tst('Đang thi, không đóng được!','b');return;}
@@ -1185,6 +1215,222 @@ function startBoxingGame(callback){
     if(callback)callback(win);
   }
 }
+// ============ SỰ KIỆN BẤT NGỜ ============
+let evActive=false;
+
+function showEvent({avatar,tag,title,desc,options}){
+  evActive=true;
+  const modal=document.createElement('div');modal.className='ev-modal on';
+  const opts=options.map((o,i)=>`<button class="ev-opt${o.alt?' alt':''}${o.ghost?' ghost':''}" data-i="${i}">${o.label}<span class="sub">${o.sub||''}</span></button>`).join('');
+  modal.innerHTML=`<div class="ev-card"><div class="ev-avatar">${avatar}</div><div class="ev-tag">${tag}</div><div class="ev-title">${title}</div><div class="ev-desc">${desc}</div>${opts}</div>`;
+  document.body.appendChild(modal);
+  modal.querySelectorAll('.ev-opt').forEach(b=>{
+    b.onclick=()=>{
+      const opt=options[parseInt(b.dataset.i)];
+      modal.remove();
+      evActive=false;
+      if(opt.action)opt.action();
+    };
+  });
+}
+
+function triggerRandomEvent(c){
+  if(!c||tournamentMode||evActive)return;
+  const name=c.name,face=c.face;
+  const roll=Math.random();
+  // Chọn sự kiện
+  let ev;
+  if(roll<0.12){
+    ev='anquyt';
+  }else if(roll<0.24){
+    ev='phanNan';
+  }else if(roll<0.32){
+    ev='gayRoi';
+  }else if(roll<0.42){
+    ev='thieuTien';
+  }else if(roll<0.52){
+    ev='duTien';
+  }else if(roll<0.62){
+    ev='traGia';
+  }else if(roll<0.68){
+    ev='hetGas';
+  }else{return;}
+  if(ev==='anquyt')evAnQuyt(name,face);
+  else if(ev==='phanNan')evPhanNan(name,face);
+  else if(ev==='gayRoi')evGayRoi(name,face);
+  else if(ev==='thieuTien')evThieuTien(name,face);
+  else if(ev==='duTien')evDuTien(name,face);
+  else if(ev==='trGia'||ev==='traGia')evTraGia(name,face);
+  else if(ev==='hetGas')evHetGas();
+}
+
+// 1. ĂN QUỴT
+function evAnQuyt(name,face){
+  const amt=30000+Math.floor(Math.random()*40000);
+  showEvent({
+    avatar:face,tag:'ĂN QUỴT',title:`${name} định ăn quỵt!`,
+    desc:`Ăn xong, <b>${name}</b> lẳng lặng đứng dậy đi ra cửa mà chưa trả <b>${fm(amt)}</b>.`,
+    options:[
+      {label:'Chạy theo đòi',sub:'hên xui, 50% đòi được',action:()=>{
+        if(Math.random()<0.5){S.money+=amt;revToday+=amt;S.totalProfit+=amt;tst(`Đòi được ${fk(amt)}!`,'g');}
+        else{S.stars=Math.max(1,S.stars-0.1);tst(`Không đuổi kịp, mất ${fk(amt)}`,'b');S.reviewList.push({face,name,stars:2,text:'Khách ăn quỵt chạy mất.',day:S.day});}
+        servedToday++;S.missionBowl++;save();
+      }},
+      {label:'Thôi, bỏ qua',sub:`mất ${fk(amt)}`,alt:true,action:()=>{
+        S.reviews++;S.stars=Math.max(1,S.stars-0.05);
+        S.reviewList.push({face,name,stars:2,text:'Khách ăn quỵt, chủ quán không đuổi.',day:S.day});
+        tst(`Bỏ qua, mất ${fk(amt)}`,'b');
+        servedToday++;S.missionBowl++;save();
+      }},
+    ]
+  });
+}
+
+// 2. KHÁCH PHÀN NÀN TÓC TRONG TÔ
+function evPhanNan(name,face){
+  const amt=40000+Math.floor(Math.random()*30000);
+  showEvent({
+    avatar:face,tag:'KHÁCH PHÀN NÀN',title:`${name} than phiền`,
+    desc:`"Ủa, trong tô có <b>sợi tóc</b> nè!" ${name} nói to, mấy bàn bên cạnh quay sang nhìn.`,
+    options:[
+      {label:'Xin lỗi, hoàn tiền',sub:`mất ${fk(amt)}, giữ uy tín`,action:()=>{
+        S.reviews++;S.stars=Math.max(1,Math.min(5,(S.stars*(S.reviews-1)+4)/S.reviews));
+        S.reviewList.push({face,name,stars:4,text:'Quán xử lý lỗi nhanh, có hoàn tiền.',day:S.day});
+        tst(`Xin lỗi hoàn tiền ${fk(amt)}`,'g');
+        servedToday++;S.missionBowl++;save();
+      }},
+      {label:'Tặng thêm topping',sub:'tốn 10k, hên xui',alt:true,action:()=>{
+        if(Math.random()<0.7){S.money-=10000;S.reviews++;S.stars=Math.max(1,Math.min(5,(S.stars*(S.reviews-1)+4.5)/S.reviews));tst('Khách hài lòng, tip thêm!','g');S.money+=15000;S.reviewList.push({face,name,stars:5,text:'Quán tặng topping bù, dễ thương!',day:S.day});}
+        else{S.stars=Math.max(1,S.stars-0.15);S.reviewList.push({face,name,stars:2,text:'Tóc trong tô, tặng topping không đủ.',day:S.day});tst('Khách vẫn bực!','b');}
+        servedToday++;S.missionBowl++;save();
+      }},
+      {label:'Cãi: tóc của khách mà',sub:'hên xui, có thể mất sao',alt:true,action:()=>{
+        if(Math.random()<0.3){tst('Khách chột dạ, xin lỗi!','g');}
+        else{S.stars=Math.max(1,S.stars-0.3);S.reviewList.push({face,name,stars:1,text:'Chủ quán cãi khách, tệ!',day:S.day});tst('Khách giận dữ bỏ về!','b');}
+        servedToday++;S.missionBowl++;save();
+      }},
+    ]
+  });
+}
+
+// 3. KHÁCH GÂY RỐI
+function evGayRoi(name,face){
+  showEvent({
+    avatar:face,tag:'KHÁCH GÂY RỐI',title:`${name} say xỉn làm ồn`,
+    desc:`${name} vừa nhậu ở quán bên cạnh qua, nói to hát hò làm các bạn khác khó chịu.`,
+    options:[
+      {label:'Mời khách về',sub:'mất một khách',action:()=>{
+        // Đuổi khách gây rối - không tính là angry
+        tst(`Đã mời ${name} về`,'g');
+        servedToday++;S.missionBowl++;save();
+      }},
+      {label:'Pha ly trà gừng',sub:'tốn 5k, hên xui',alt:true,action:()=>{
+        S.money-=5000;
+        if(Math.random()<0.75){tst('Khách tỉnh ra, xin lỗi!','g');S.money+=10000;}
+        else{tst('Khách vẫn say, ồn ào hơn!','b');S.stars=Math.max(1,S.stars-0.1);}
+        servedToday++;S.missionBowl++;save();
+      }},
+      {label:'Kệ khách',sub:'khách khác mất kiên nhẫn nhanh hơn',alt:true,action:()=>{
+        // Giảm kiên nhẫn các khách còn lại
+        customers.forEach(c=>{c.patience=Math.max(0.1,c.patience-0.3);});
+        tst('Khách khác bực bội!','b');
+        servedToday++;S.missionBowl++;save();
+      }},
+    ]
+  });
+}
+
+// 4. ĐƯA THIẾU TIỀN
+function evThieuTien(name,face){
+  const amt=10000;
+  showEvent({
+    avatar:face,tag:'ĐƯA NHẦM TIỀN',title:`${name} đưa thiếu tiền`,
+    desc:`${name} đưa thiếu <b>${fk(amt)}</b> rồi vội vàng đi ra cửa.`,
+    options:[
+      {label:'Gọi lại nhắc khéo',sub:'hên xui',action:()=>{
+        if(Math.random()<0.7){S.money+=amt;revToday+=amt;S.totalProfit+=amt;tst(`Đòi được ${fk(amt)}!`,'g');}
+        else{tst(`Khách không nghe, mất ${fk(amt)}`,'b');}
+        servedToday++;S.missionBowl++;save();
+      }},
+      {label:'Thôi bỏ qua',sub:`mất ${fk(amt)}`,alt:true,action:()=>{
+        tst(`Bỏ qua, mất ${fk(amt)}`,'b');
+        servedToday++;S.missionBowl++;save();
+      }},
+    ]
+  });
+}
+
+// 5. ĐƯA DƯ TIỀN
+function evDuTien(name,face){
+  const amt=20000;
+  showEvent({
+    avatar:face,tag:'ĐƯA NHẦM TIỀN',title:`${name} đưa dư tiền`,
+    desc:`${name} đưa nhầm tờ tiền, dư <b>${fk(amt)}</b> mà không để ý.`,
+    options:[
+      {label:'Trả lại tiền dư',sub:'khách quý, quán nổi tiếng thật thà',action:()=>{
+        S.reviews++;S.stars=Math.max(1,Math.min(5,(S.stars*(S.reviews-1)+5)/S.reviews));
+        S.reviewList.push({face,name,stars:5,text:'Quán thật thà trả lại tiền dư!',day:S.day});
+        tst('Khách cảm kích, để lại 5 sao!','g');
+        servedToday++;S.missionBowl++;save();
+      }},
+      {label:'Im lặng giữ luôn',sub:'hên xui',alt:true,action:()=>{
+        S.money+=amt;revToday+=amt;S.totalProfit+=amt;
+        if(Math.random()<0.4){S.stars=Math.max(1,S.stars-0.15);S.reviewList.push({face,name,stars:2,text:'Quán không trả lại tiền dư!',day:S.day});tst('Khách phát hiện, bực!','b');}
+        else{tst(`Giữ được ${fk(amt)}`,'g');}
+        servedToday++;S.missionBowl++;save();
+      }},
+    ]
+  });
+}
+
+// 6. TRẢ GIÁ
+function evTraGia(name,face){
+  const amt=5000+Math.floor(Math.random()*8000);
+  showEvent({
+    avatar:face,tag:'TRẢ GIÁ',title:`${name} trả giá`,
+    desc:`"Quán ơi bớt cho em <b>${fk(amt)}</b> đi, lần sau em dẫn bạn tới ăn!"`,
+    options:[
+      {label:`Bớt ${fk(amt)}`,sub:'khách vui, dễ quay lại',action:()=>{
+        S.money-=amt;
+        S.reviews++;S.stars=Math.max(1,Math.min(5,(S.stars*(S.reviews-1)+5)/S.reviews));
+        tst(`Đã bớt ${fk(amt)}`,'g');
+        servedToday++;S.missionBowl++;save();
+      }},
+      {label:'Giữ giá',sub:'hên xui',alt:true,action:()=>{
+        if(Math.random()<0.6){tst('Khách chấp nhận, vẫn trả đủ','g');}
+        else{S.stars=Math.max(1,S.stars-0.05);tst('Khách hơi buồn','b');}
+        servedToday++;S.missionBowl++;save();
+      }},
+      {label:'Tặng ly trà đá',sub:'tốn 3k, hên xui',alt:true,action:()=>{
+        S.money-=3000;
+        if(Math.random()<0.85){S.reviews++;S.stars=Math.max(1,Math.min(5,(S.stars*(S.reviews-1)+4.8)/S.reviews));tst('Khách vui, tip lại 5k!','g');S.money+=5000;}
+        else{tst('Khách vẫn muốn bớt tiền','b');}
+        servedToday++;S.missionBowl++;save();
+      }},
+    ]
+  });
+}
+
+// 7. HẾT GAS
+function evHetGas(){
+  showEvent({
+    avatar:'🔥',tag:'SỰ CỐ BẾP',title:'Hết bình gas!',
+    desc:'Bếp phụt tắt giữa giờ đông khách, bình gas đã cạn.',
+    options:[
+      {label:'Gọi gas giao gấp',sub:'tốn 60k, nấu tiếp ngay',action:()=>{
+        S.money-=60000;
+        tst('Gas mới tới, nấu tiếp!','g');
+        save();
+      }},
+      {label:'Dùng bếp điện dự phòng',sub:'mì chín chậm hơn 40 giây',alt:true,action:()=>{
+        // Giảm kiên nhẫn khách chờ
+        customers.forEach(c=>{c.patience=Math.max(0.05,c.patience-0.4);});
+        tst('Bếp điện chậm, khách sốt ruột!','b');
+        save();
+      }},
+    ]
+  });
+}
 // ============ EMPLOYEE EVENTS ============
 function getHired(){return Object.keys(S.hired).filter(id=>S.hired[id]===true&&EQ[id]&&EQ[id].cat==='nv');}
 function maybeEmpEvent(){
@@ -1293,7 +1539,7 @@ function loop(now){
       if(h)h.textContent=`⏱ ${Math.ceil(tournamentTimer)}s · Điểm ${tournamentScore}`;
       if(tournamentTimer<=0)enTN();
     }else{
-      S.time+=dt*36;
+      S.time+=dt*12;
       if(S.time>=21*60){
         S.time=21*60;
         if(!tournamentMode&&running){tst('21h rồi, đóng cửa nghỉ!','b');closeShopAuto();}
@@ -1313,9 +1559,9 @@ function loop(now){
         if(tournamentMode){
           spawnTimer=1.5+Math.random()*1.5;
         }else{
-          const remainTime=(21*60-S.time)/36;
+          const remainTime=(21*60-S.time)/12;
           const remainCust=sl-(servedToday+angryToday+customers.length);
-          spawnTimer=Math.max(0.6, Math.min(5, remainTime/Math.max(1,remainCust)*0.7));
+          spawnTimer=Math.max(0.5, Math.min(60, remainTime/Math.max(1,remainCust)*0.7));
         }
         rSlot();rOS();
       }else{spawnTimer=0.5;}
@@ -1345,6 +1591,7 @@ function init(){
   $('potCol').onclick=onPot;$('sauceCol').onclick=onSC;
   $('bowlStage').onclick=onBS;$('dumpBtn').onclick=onDump;$('serveBtn').onclick=onSrv;
   $('btnCloseShop').onclick=closeShop;
+  $('btnBGM').onclick=toggleBGM;
   let tp=0,tm2=null;
   document.querySelector('.ph').addEventListener('click',()=>{
     tp++;clearTimeout(tm2);tm2=setTimeout(()=>tp=0,800);
@@ -1354,6 +1601,66 @@ function init(){
   running=false;requestAnimationFrame(loop);lastTime=performance.now();
 }
 init();
+// ============ NHẠC NỀN ============
+let bgmCtx=null,bgmTimer=null,bgmOn=false,bgmVol=0.15;
+const bgmScale=[261.63,293.66,329.63,392.00,440.00]; // C D E G A - ngũ cung
+const bgmBass=[130.81,146.83,164.81,196.00,220.00];
+let bgmIdx=0,bgmBassIdx=0;
+
+function startBGM(){
+  if(bgmOn)return;
+  try{
+    if(!bgmCtx)bgmCtx=new(window.AudioContext||window.webkitAudioContext)();
+    if(bgmCtx.state==='suspended')bgmCtx.resume();
+  }catch(e){console.warn('Không có Web Audio');return;}
+  bgmOn=true;
+  let beat=0;
+  const playNote=(freq,dur,vol,type='triangle')=>{
+    const o=bgmCtx.createOscillator();
+    const g=bgmCtx.createGain();
+    o.type=type;
+    o.frequency.value=freq;
+    g.gain.setValueAtTime(0,bgmCtx.currentTime);
+    g.gain.linearRampToValueAtTime(vol*bgmVol,bgmCtx.currentTime+0.02);
+    g.gain.exponentialRampToValueAtTime(0.001,bgmCtx.currentTime+dur);
+    o.connect(g);g.connect(bgmCtx.destination);
+    o.start();o.stop(bgmCtx.currentTime+dur+0.05);
+  };
+  bgmTimer=setInterval(()=>{
+    if(!bgmOn)return;
+    // Giai điệu chính - mỗi 0.4s
+    if(beat%2===0){
+      const n=bgmScale[Math.floor(Math.random()*bgmScale.length)];
+      playNote(n,0.5,0.5,'triangle');
+    }
+    // Bass - mỗi 1.6s
+    if(beat%4===0){
+      const b=bgmBass[Math.floor(Math.random()*bgmBass.length)];
+      playNote(b,1.2,0.6,'sine');
+    }
+    // Trống nhẹ - mỗi 0.8s
+    if(beat%2===0&&Math.random()<0.4){
+      const o=bgmCtx.createOscillator();
+      const g=bgmCtx.createGain();
+      o.type='square';
+      o.frequency.value=80;
+      g.gain.setValueAtTime(0.08*bgmVol,bgmCtx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001,bgmCtx.currentTime+0.1);
+      o.connect(g);g.connect(bgmCtx.destination);
+      o.start();o.stop(bgmCtx.currentTime+0.15);
+    }
+    beat++;
+  },400);
+}
+function stopBGM(){
+  bgmOn=false;
+  if(bgmTimer){clearInterval(bgmTimer);bgmTimer=null;}
+}
+function toggleBGM(){
+  if(bgmOn)stopBGM();else startBGM();
+  const b=$('btnBGM');if(b)b.textContent=bgmOn?'🔊 Nhạc':'🔇 Nhạc';
+  save();
+}
 </script>
 </body>
 </html>
