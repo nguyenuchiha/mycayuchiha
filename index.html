@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>mykay</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- START -->
+<div id="s-start" class="screen on">
+  <div class="sw">
+    <div class="si"><div class="am" id="startAwning"></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;position:relative;z-index:1">
+        <div style="font-size:46px">🍜</div>
+        <div style="display:flex;gap:5px"><div style="width:22px;height:16px;background:#8b5a2b;border-radius:3px 3px 0 0"></div><div style="width:22px;height:16px;background:#8b5a2b;border-radius:3px 3px 0 0"></div><div style="width:22px;height:16px;background:#8b5a2b;border-radius:3px 3px 0 0"></div></div>
+      </div>
+    </div>
+    <div class="sr">
+      <div class="st" id="startTitle">mykay</div>
+      <div class="ss">Nấu mì, chiều khách, cay đúng cấp.<br>Mở tiệm nhỏ của riêng bạn.</div>
+      <button class="bp" id="btnOpenShop">Mở tiệm</button>
+      <div class="br"><button class="bs" id="btnLeaderboard">🏆 Bảng xếp hạng</button><button class="bs" id="btnHowto">📖 Cách chơi</button></div>
+      <div class="br"><button class="bs" id="btnRename">✏️ Đổi tên quán</button><button class="bs" id="btnPrank">🎁 Chọc quán</button></div>
+      <button class="bs" id="btnTournament" style="background:linear-gradient(90deg,#d94a3d,#a83a2f);border-color:var(--gold)">🍲 Giải mì hôm nay</button>
+      <div class="nt"><b>Thông báo</b><br>Game đang phát triển. Không thu phí.</div>
+    </div>
+  </div>
+</div>
+
+<!-- TUTORIAL -->
+<div id="s-tut" class="screen">
+  <button class="tc" id="tutClose">Đóng</button>
+  <div class="ts on"><div class="tv"><div style="font-size:50px">🍜</div></div><div class="tt"><h2>Chào mừng!</h2><p>Bạn khởi nghiệp với xe đẩy mì cay vỉa hè.</p></div></div>
+  <div class="ts"><div class="tv"><div style="font-size:50px">🛒</div></div><div class="tt"><h2>Sáng: nhập hàng</h2><p>Vào tab Kho, bấm + chọn món rồi bấm <b>🛒 Nhập hàng</b>. Sau đó mới bấm <b>🚪 Mở cửa</b>.</p></div></div>
+  <div class="ts"><div class="tv"><div style="font-size:50px">💚</div></div><div class="tt"><h2>Viền vàng → viền xanh</h2><p>Khách gọi món nào → ô đó viền vàng. Bỏ đúng → viền xanh lá.</p></div></div>
+  <div class="ts"><div class="tv" style="font-size:24px">🥣→🥘→🍜→🥩→🌶️→🍜</div><div class="tt"><h2>Nấu một tô</h2><p>Lấy tô → nước dùng → luộc mì → topping → sốt → giao.</p></div></div>
+  <div class="ts"><div class="tv"><div style="font-size:50px">⏰</div></div><div class="tt"><h2>9h-21h · 30 phút</h2><p>Một ngày 30 phút. Khách chờ 10 giây. Quán có 3 bàn. 21h tự đóng cửa.</p></div></div>
+  <div class="ts"><div class="tv"><div style="font-size:50px">🧼</div></div><div class="tt"><h2>Rửa tô cuối ngày</h2><p>Khách ăn xong trả tô bẩn. Cuối ngày vào Rửa tô.</p></div></div>
+  <div class="ts"><div class="tv"><div style="font-size:50px">🐭</div></div><div class="tt"><h2>Sự cố bất ngờ</h2><p>Đập chuột gián, khách đập chén, quản lý ghé tăng giá hoặc phạt NV. Xử lý khéo léo!</p></div></div>
+  <div class="td" id="tutDots"></div>
+  <button class="tn" id="tutNext">Tiếp</button>
+</div>
+
+<!-- PREP -->
+<div id="s-prep" class="screen">
+  <button id="btnBGM" style="background:#555;color:#fff;padding:6px 10px;border-radius:8px;font-size:11px;font-weight:800">🔇 Nhạc</button>
+  <div class="ph">
+    <div><div style="font-weight:800;font-size:13px">Ngày <span id="prepDay">1</span></div><div style="font-size:11px;color:var(--dim)">Chuẩn bị</div></div>
+    <div style="text-align:center"><div style="font-size:10px;color:var(--dim)">KẾT</div><div class="pm" id="prepMoney">400k</div></div>
+    <div style="text-align:right"><div class="ps" id="prepStars">★★★★☆</div><div style="font-size:10px;color:var(--dim)"><span id="prepRate">4.0</span> · <span id="prepRevCount">0</span></div></div>
+  </div>
+  <div class="pb">
+    <div class="pl">
+      <div class="brand"><div style="flex:1;min-width:0">
+        <div class="bn" id="brandName">mykay</div>
+        <div class="bl">Cấp <span id="lvlNum">1</span> · <span id="lvlName">Xe đẩy vỉa hè</span></div>
+        <div class="xb"><div class="xf" id="xpFill"></div></div>
+        <div style="font-size:10px;color:rgba(255,255,255,.7);margin-top:4px"><span id="xpCur">0</span>/<span id="xpNext">150</span> XP</div>
+      </div><div class="bc">🌶️</div></div>
+      <div class="sv" id="shopBanner">
+        <img src="img/shop.png" alt="xe đẩy" class="shop-img">
+         <div class="aw" id="shopAwning"></div>
+          <div class="ln" id="shopLanterns"></div>
+          <div class="pl2" id="shopPlants"></div>
+          <div class="ct" id="shopPet"></div>
+          </div>
+      <div class="ms"><h3>Nhiệm vụ hôm nay</h3>
+        <div class="mi"><div class="d">Bán 6 tô mì<small>Thưởng 20k · +30 XP</small></div><div class="p" id="mBowl">0/6</div></div>
+        <div class="mi"><div class="d">Không khách bỏ về<small>Thưởng 20k · +30 XP</small></div><div class="p" id="mNoAngry">cuối ngày</div></div>
+        <div class="mi"><div class="d">3 khách chấm 5 sao<small>Thưởng 20k · +30 XP</small></div><div class="p" id="mFiveStars">0/3</div></div>
+      </div>
+    </div>
+    <div class="pr">
+      <div class="tb" id="prepTabs">
+        <button class="tab on" data-tab="kho">🏺 Kho</button><button class="tab" data-tab="gia">🏷️ Giá</button><button class="tab" data-tab="nang">⬆️ Nâng</button>
+        <button class="tab" data-tab="trang">🌸 Trang trí</button><button class="tab" data-tab="danh">⭐ Đánh giá</button><button class="tab" data-tab="so">📒 Sổ</button>
+      </div>
+      <div class="sa" id="stockArea"></div>
+    </div>
+  </div>
+  <div class="pf">
+    <div style="display:flex;gap:6px">
+      <button class="bp" id="btnBuy" style="flex:1;background:#555;box-shadow:0 4px 0 #333;cursor:not-allowed" disabled>🛒 Nhập hàng</button>
+      <button class="bp" id="btnServeDay" style="flex:1.2">🚪 Mở cửa ngày 1</button>
+    </div>
+    <div style="text-align:center;font-size:10px;color:var(--dim);margin-top:5px">Mặt bằng 50k, điện nước 20k/ngày</div>
+  </div>
+</div>
+
+<!-- SERVE -->
+<div id="s-serve" class="screen">
+  <div class="sh">
+    <button class="pause-btn" id="btnCloseShop">⏸</button>
+    <div class="sh-day">
+      <div class="sd">Ngày <span id="svDay">1</span></div>
+      <div class="st2" id="svTime">09:00</div>
+    </div>
+    <div class="sh-mid">
+      <div class="sl">KẾT</div>
+      <div class="sm" id="svMoney">400k</div>
+    </div>
+    <div class="sh-stars">
+      <div class="ps" id="svStars">★★★★☆</div>
+      <div class="st2"><span id="svRate">4.0</span> · <span id="svRevCount">0</span> đánh giá</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="seat-row" id="custSlots"></div>
+    <!-- ĐƠN APP ONLINE -->
+     <div class="app-orders" id="appOrders"></div>
+    <div class="order-bubble" id="orderStrip">
+      <div class="oi">🥣</div>
+      <div class="otxt">Đang chờ khách...</div>
+    </div>
+    <div class="patience-strip"><div class="patience-fill" id="patienceFill"></div></div>
+
+    <div class="bases-row" id="basesRow"></div>
+
+    <div class="cook-middle">
+      <div class="cook-left">
+        <div class="tile-cook" id="potCol">
+          <div class="tc-ic">🍲</div>
+          <div class="tc-lbl">Na luộc</div>
+          <div class="cook-meter"><div class="cz" id="cmZone"></div><div class="nd" id="needle" style="left:0"></div></div>
+          <div class="tc-state" id="cookState">Chạm thả</div>
+        </div>
+        <div class="tile-cook" id="roMi">
+          <div class="tc-ic">🥣</div>
+          <div class="tc-lbl">Rổ mì<br>chín</div>
+          <div class="ro-cnt" id="roMiCount">0</div>
+        </div>
+      </div>
+
+      <div class="big-bowl-stage" id="bowlStage">
+        <div class="bowl-hint" id="bowlHint">Chạm rổ mì chín để lấy mì</div>
+        <svg class="bowl-svg" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="100" cy="150" rx="72" ry="6" fill="rgba(90,60,40,.25)"/>
+          <path d="M28,80 Q30,142 100,142 Q170,142 172,80 Z" fill="#f5e6d3" stroke="#2a1815" stroke-width="3" stroke-linejoin="round"/>
+          <ellipse cx="100" cy="80" rx="72" ry="13" fill="#e8d4b8" stroke="#2a1815" stroke-width="3"/>
+          <ellipse cx="100" cy="80" rx="64" ry="10" fill="#c43a2e"/>
+          <ellipse cx="100" cy="78" rx="56" ry="7" fill="#d94a3d"/>
+          <ellipse cx="78" cy="82" rx="14" ry="3.5" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="3 3" opacity=".7"/>
+          <ellipse cx="125" cy="80" rx="11" ry="3" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="3 3" opacity=".7"/>
+          <ellipse cx="105" cy="84" rx="8" ry="2" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="3 3" opacity=".6"/>
+          <path d="M40,38 Q60,40 82,76" stroke="#8b5a2b" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M40,38 Q60,40 82,76" stroke="#a06b30" stroke-width="2" fill="none" stroke-linecap="round" opacity=".5"/>
+          <path d="M52,28 Q68,34 84,74" stroke="#8b5a2b" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M52,28 Q68,34 84,74" stroke="#a06b30" stroke-width="2" fill="none" stroke-linecap="round" opacity=".5"/>
+          <ellipse cx="76" cy="115" rx="7" ry="8" fill="#2a1815"/>
+          <ellipse cx="124" cy="115" rx="7" ry="8" fill="#2a1815"/>
+          <circle cx="74" cy="112" r="2" fill="#fff"/>
+          <circle cx="122" cy="112" r="2" fill="#fff"/>
+          <path d="M90,120 Q100,128 110,120" stroke="#2a1815" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <ellipse cx="80" cy="128" rx="5" ry="3" fill="#f0a0a0" opacity=".6"/>
+          <ellipse cx="120" cy="128" rx="5" ry="3" fill="#f0a0a0" opacity=".6"/>
+          <path d="M85,54 Q88,48 85,42" stroke="rgba(255,255,255,.6)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M100,50 Q103,44 100,38" stroke="rgba(255,255,255,.6)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M115,54 Q118,48 115,42" stroke="rgba(255,255,255,.6)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="bowl-contents" id="bowlContents" style="display:none"></div>
+        <div id="bowlEmpty" style="display:none"></div>
+        <div class="bowl-status" id="bowlStatus">Kim chi · chưa có mì</div>
+      </div>
+
+      <div class="cook-right">
+        <div class="tile-cook sauce" id="sauceCol">
+          <div class="tc-ic">🌶️</div>
+          <div class="tc-lbl">Sốt ớt</div>
+          <div class="sauce-cnt zero" id="sauceCount">0</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-row">
+      <button class="big-serve" id="serveBtn" disabled><span>🍜</span> Giao món</button>
+      <button class="small-dump" id="dumpBtn"><span>🗑️</span>Đổ tô</button>
+    </div>
+
+    <div class="topping-grid" id="toppingRow"></div>
+  </div>
+</div>
+
+<!-- MODAL -->
+ <!-- MINIGAME ĐẬP CHUỘT/GIÁN -->
+<div id="s-boxing" class="boxing-screen">
+  <div class="boxing-header">
+    <div class="boxing-title">🐭 ĐẬP CHUỘT GIÁN!</div>
+    <button class="boxing-close" id="boxingClose">✕ Thoát</button>
+  </div>
+
+  <div class="boxing-arena">
+    <div class="boxing-hud">
+      <div class="boxing-side">
+        <div class="boxing-av">👊</div>
+        <div class="boxing-hpbar"><div class="boxing-hpf" id="bh1"></div></div>
+        <div class="boxing-hpt" id="bht1">100</div>
+      </div>
+      <div class="boxing-vs">VS</div>
+      <div class="boxing-side">
+        <div class="boxing-av" id="boxPestIc">🐭</div>
+        <div class="boxing-hpbar"><div class="boxing-hpf pest" id="bh2"></div></div>
+        <div class="boxing-hpt" id="bht2">100</div>
+      </div>
+    </div>
+
+    <div class="boxing-msg" id="boxMsg">ĐẤM NÓ!</div>
+
+    <button class="boxing-hit" id="boxHit">👊 ĐẤM!</button>
+
+    <div class="boxing-hint">Bấm liên tục để đấm. Đối thủ sẽ phản đòn!</div>
+  </div>
+</div>
+
+<div class="mo" id="modal"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
